@@ -1,0 +1,8 @@
+@use 'quasar/src/css/index.sass';
+@use '@quasar/extras/material-icons/material-icons.css';
+
+.q-textarea {
+  .q-field__control {
+    padding: 0 1.2rem;
+  }
+}
