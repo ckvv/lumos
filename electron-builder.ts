@@ -53,21 +53,9 @@ export default {
   ],
   mac: {
     icon: 'public/lumos.icns',
-    target: [
-      'dmg',
-    ],
-    artifactName: '${name}-macOS-${version}.${arch}.${ext}',
   },
   win: {
     icon: 'public/lumos.png',
-    target: [{
-      target: 'nsis',
-      arch: [
-        'x64',
-        'arm64',
-      ],
-    }],
-    artifactName: '${name}.Windows.${version}.${arch}.${ext}',
   },
   extraResources: ['public'],
 } as Configuration;
