@@ -1,7 +1,7 @@
 {
   "name": "lumos",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca",
   "description": "在您的机器上本地运行 AI 模型",
@@ -10,6 +10,7 @@
   },
   "main": "dist-electron/main.js",
   "scripts": {
+    "release": "standard-version",
     "dev": "vite",
     "build": "vue-tsc && vite build && electron-builder --config electron-builder.ts",
     "preview": "vite preview",
@@ -29,6 +30,7 @@
     "electron": "^32.1.2",
     "electron-builder": "^25.1.7",
     "eslint": "^9.12.0",
+    "standard-version": "^9.5.0",
     "markdown-it": "^14.1.0",
     "quasar": "^2.17.0",
     "sass-embedded": "^1.79.4",
