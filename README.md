@@ -8,10 +8,22 @@
 - 无需配置任何内容, MacOS 或者 Windosw 下载安装包直接使用
 - 你可以自由的切换 GGUF 模型文件
 
-# 获取模型文件
+## 使用
 
-建议您在 Hugging Face 上从 [Michael Radermacher](https://huggingface.co/mradermacher) 那里获取 GGUF 模型，或者直接搜索 [GGUF 模型](https://huggingface.co/models?library=gguf)
+### 1.下载你对应机器的安装包
+<https://github.com/ckvv/lumos/releases> 页面下载你对应机器的安装包
 
+> 如果你未找到自己机器的安装包, 也可以选择源码构建构建
+```shell
+pnpm install
+pnpm run build
+```
+
+### 2.获取 GGUF 模型
+
+由于 GGUF 文件较大, 所以未内置到程序安装包,你可以在 Hugging Face 获取 GGUF 模型 <https://huggingface.co/models?library=gguf>
+
+### 其他
 # 产品截图
 
 ![初始化](./public/1.png)
