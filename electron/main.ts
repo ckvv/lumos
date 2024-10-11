@@ -2,7 +2,8 @@ import path from 'node:path';
 import process from 'node:process';
 import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 import { __dirname, RENDERER_DIST, VITE_DEV_SERVER_URL, VITE_PUBLIC } from './config';
-import { defaultModel, llamaSingleton, readGgufFileInfo } from './llama';
+import { defaultModel, llamaSingleton, type Model, readGgufFileInfo } from './llama';
+import { store } from './store';
 
 let win: BrowserWindow | null;
 
@@ -74,19 +75,30 @@ app.whenReady().then(async () => {
     event.sender.send('chat-end');
   });
 
+  ipcMain.handle('get-default-models', async (_event) => {
+    return updateModels();
+  });
+
   ipcMain.handle('chat-open-load-model', async () => {
     const { canceled, filePaths } = await dialog.showOpenDialog(win, { securityScopedBookmarks: true });
     if (!canceled) {
       const modelPath = filePaths[0];
       await readGgufFileInfo(modelPath);
-      return {
+      const model = {
         modelName: path.basename(modelPath, path.extname(modelPath)),
         modelPath,
       };
+      updateModels((models) => {
+        if (!models.find(m => m.modelPath === model.modelPath)) {
+          models.push(model);
+        }
+        return models;
+      });
+      return model;
     }
   });
 
-  ipcMain.handle('chat-load-model', async (event, model) => {
+  ipcMain.handle('chat-load-model', async (event, model: Model) => {
     if (model) {
       await llamaSingleton.setModel({
         modelPath: model.modelPath || defaultModel.modelPath,
@@ -95,3 +107,20 @@ app.whenReady().then(async () => {
     }
   });
 });
+
+function updateModels(handler?: (model: Model[]) => Model[]) {
+  const key = 'models';
+  let models: Model[] = [];
+  try {
+    models = store.get(key) as Model[] || [];
+  // eslint-disable-next-line unused-imports/no-unused-vars
+  } catch (error) {
+    models = [];
+  }
+  models = handler ? handler(models) : models;
+
+  store.set(key, models);
+
+  console.log('models:', models, '|', store.get(key));
+  return models;
+}

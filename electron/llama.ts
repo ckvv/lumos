@@ -5,6 +5,11 @@ import { MODEL_PATH } from './config';
 
 export * from 'node-llama-cpp';
 
+export interface Model {
+  modelName: string;
+  modelPath: string;
+}
+
 export const defaultModel = {
   modelName: 'Qwen2.5-0.5B-Instruct.Q4_K_M',
   modelPath: path.join(MODEL_PATH, 'Qwen2.5-0.5B-Instruct.Q4_K_M.gguf'),

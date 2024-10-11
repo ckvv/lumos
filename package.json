@@ -17,6 +17,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "electron-store": "^10.0.0",
     "node-llama-cpp": "^3.1.1"
   },
   "devDependencies": {

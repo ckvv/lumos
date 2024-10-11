@@ -6,14 +6,12 @@ const quasar = useQuasar();
 
 const loading = ref(false);
 const models = ref<{ modelName: string; modelPath: string }[]>([]);
-
-nextTick(() => {
-  window.ipcRenderer.on('default-model', (event, model: any) => {
-    console.log('model', model);
-  });
-});
-
 const model = ref(models.value[0]);
+nextTick(async () => {
+  const defaultModels = await window.ipcRenderer.invoke('get-default-models');
+  models.value = defaultModels;
+  model.value = defaultModels[0];
+});
 
 async function handlerClick() {
   try {
