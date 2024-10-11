@@ -23,6 +23,14 @@ pnpm run build
 
 由于 GGUF 文件较大, 所以未内置到程序安装包,你可以在 Hugging Face 获取 GGUF 模型 <https://huggingface.co/models?library=gguf>
 
+如果你不知道下载那个, 下面是几个推荐的:
+
++ [Qwen2.5-0.5B-Instruct.Q4_K_M](https://huggingface.co/mradermacher/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct.Q4_K_M.gguf?download=true)
++ [Qwen2.5-1.5B-Instruct](https://huggingface.co/mradermacher/Qwen2.5-1.5B-Instruct-GGUF/tree/main)
++ [Qwen2.5-7B-Instruct](https://huggingface.co/mradermacher/Qwen2.5-7B-Instruct-GGUF/tree/main)
++ [Llama-3.2-3B-Instruct-GGUF](https://huggingface.co/mradermacher/Llama-3.2-3B-Instruct-GGUF)
++ [LLaMA-3.1-8B-Instruct-KW-v2-GGUF](https://huggingface.co/mradermacher/LLaMA-3.1-8B-Instruct-KW-v2-GGUF/tree/main)
+
 ### 其他
 # 产品截图
 
