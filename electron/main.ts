@@ -121,6 +121,5 @@ function updateModels(handler?: (model: Model[]) => Model[]) {
 
   store.set(key, models);
 
-  console.log('models:', models, '|', store.get(key));
   return models;
 }

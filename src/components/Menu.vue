@@ -1,21 +1,23 @@
 <script setup lang="ts">
 import { useQuasar } from 'quasar';
 import { nextTick, ref, toRaw, watch } from 'vue';
+import { useIpcRenderer } from '../compositions';
 
 const quasar = useQuasar();
 
+const ipcRenderer = useIpcRenderer();
 const loading = ref(false);
 const models = ref<{ modelName: string; modelPath: string }[]>([]);
 const model = ref(models.value[0]);
 nextTick(async () => {
-  const defaultModels = await window.ipcRenderer.invoke('get-default-models');
+  const defaultModels = await ipcRenderer.invoke('get-default-models');
   models.value = defaultModels;
   model.value = defaultModels[0];
 });
 
 async function handlerClick() {
   try {
-    const loadModel = await window.ipcRenderer.invoke('chat-open-load-model');
+    const loadModel = await ipcRenderer.invoke('chat-open-load-model');
     if (!loadModel) {
       return;
     };
@@ -39,7 +41,7 @@ async function handlerClick() {
 
 watch(model, async (newValue) => {
   loading.value = true;
-  await window.ipcRenderer.invoke('chat-load-model', toRaw(newValue));
+  await ipcRenderer.invoke('chat-load-model', toRaw(newValue));
   loading.value = false;
   quasar.notify({
     type: 'positive',

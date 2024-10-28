@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/core';
 import { ref, useTemplateRef } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useIpcRenderer } from '../compositions';
 import Markdown from './Markdown.vue';
 
+const { t } = useI18n();
 const chatListRef = useTemplateRef('chatListRef');
 const menuRef = useTemplateRef<{ model: string; loading: boolean }>('menuRef');
 
 const input = ref<string>();
 const chats = ref<{ text: string; role: 'user' | 'chat' }[]>([]);
 const status = ref<'start' | 'sending' | 'stop'>('stop');
+const ipcRenderer = useIpcRenderer();
 
 const scrollToEnd = useDebounceFn(() => {
   if (chatListRef.value) {
@@ -16,7 +20,7 @@ const scrollToEnd = useDebounceFn(() => {
   }
 }, 200, { maxWait: 1000 });
 
-window.ipcRenderer.on('chat-start', () => {
+ipcRenderer.on('chat-start', () => {
   if (!input.value?.trim()) {
     return;
   }
@@ -27,11 +31,11 @@ window.ipcRenderer.on('chat-start', () => {
     text: '',
   });
 });
-window.ipcRenderer.on('chat-end', () => {
+ipcRenderer.on('chat-end', () => {
   status.value = 'stop';
   scrollToEnd();
 });
-window.ipcRenderer.on('chat-send', (event, text: string) => {
+ipcRenderer.on('chat-send', (event, text: string) => {
   status.value = 'sending';
   chats.value[chats.value.length - 1].text += text;
   scrollToEnd();
@@ -48,7 +52,7 @@ async function startChat(text?: string) {
   });
 
   try {
-    await window.ipcRenderer.invoke('chat', text);
+    await ipcRenderer.invoke('chat', text);
   } catch (error) {
     chats.value.push({
       role: 'chat',
@@ -62,7 +66,7 @@ function stopChat() {
     return;
   }
   status.value = 'stop';
-  window.ipcRenderer.invoke('chat-stop');
+  ipcRenderer.invoke('chat-stop');
 }
 
 function handleKeydown(event: KeyboardEvent) {
@@ -80,14 +84,14 @@ function handleKeydown(event: KeyboardEvent) {
       <div v-for="(chat, index) in chats" :key="index" class="chat-list-item m-4 flex" :class="[`chat-list-item-${chat.role}`]">
         <span class="chat-list-item-content p-x-4 p-y-2 inline-block rounded float-right max-w-80%" :class="[chat.role === 'user' ? 'bg-green-2' : 'bg-white']">
           <Markdown v-if="chat.text" :value="chat.text" />
-          <div v-else class="flex justify-center items-center">思考中 <div class="m-l i-material-symbols:progress-activity spin" /></div>
+          <div v-else class="flex justify-center items-center">{{ t('chat.loading') }} <div class="m-l i-material-symbols:progress-activity spin" /></div>
         </span>
       </div>
     </q-scroll-area>
-    <Typing v-else class="text-6 font-bold" value="有什么可以帮忙的 ？" />
+    <Typing v-else class="text-6 font-bold" :value="t('chat.typing')" />
     <q-input
       v-model="input"
-      :disable="!menuRef?.model || menuRef?.loading" class="w-full" :placeholder="menuRef?.model ? '给`AI模型`发送信息' : '请先选择本地 GGUF 格式模型文件'" rounded outlined autogrow autofocus
+      :disable="!menuRef?.model || menuRef?.loading" class="w-full" :placeholder="menuRef?.model ? t('chat.placeholder') : t('chat.select_model')" rounded outlined autogrow autofocus
       @keydown="handleKeydown"
     >
       <template #append>

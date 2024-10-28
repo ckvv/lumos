@@ -22,7 +22,6 @@
     { "rule": "*quotes", "severity": "error", "fixable": true },
     { "rule": "*semi", "severity": "error", "fixable": true }
   ],
-  
 
   // Enable eslint for all supported languages
   "eslint.validate": [

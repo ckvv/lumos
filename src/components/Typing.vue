@@ -9,6 +9,7 @@ const _value = ref('');
 
 watch(() => props.value, (newValue, _oldValue) => {
   let index = 0;
+  _value.value = '';
   const timer = setInterval(() => {
     if (index < newValue.length) {
       _value.value += toValue(newValue?.[index]);
