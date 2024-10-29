@@ -8,15 +8,22 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ChatRoom: typeof import('./src/components/ChatRoom.vue')['default']
+    KIcon: typeof import('./src/components/KIcon.vue')['default']
     Markdown: typeof import('./src/components/Markdown.vue')['default']
     Menu: typeof import('./src/components/Menu.vue')['default']
     QBtn: typeof import('quasar')['QBtn']
+    QCard: typeof import('quasar')['QCard']
+    QCardActions: typeof import('quasar')['QCardActions']
+    QCardSection: typeof import('quasar')['QCardSection']
+    QDialog: typeof import('quasar')['QDialog']
     QInput: typeof import('quasar')['QInput']
     QItem: typeof import('quasar')['QItem']
     QItemLabel: typeof import('quasar')['QItemLabel']
     QItemSection: typeof import('quasar')['QItemSection']
     QScrollArea: typeof import('quasar')['QScrollArea']
     QSelect: typeof import('quasar')['QSelect']
+    QSpace: typeof import('quasar')['QSpace']
+    Seeting: typeof import('./src/components/Seeting.vue')['default']
     Typing: typeof import('./src/components/Typing.vue')['default']
   }
 }

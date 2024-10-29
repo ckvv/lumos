@@ -59,6 +59,7 @@ defineExpose({
 
 <template>
   <div class="chat-menu">
+    <Seeting />
     <q-btn v-if="!models.length" @click="handlerClick">
       选择本地 GGUF 格式模型文件
     </q-btn>
