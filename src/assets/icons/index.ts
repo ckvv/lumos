@@ -4,7 +4,7 @@ const _icons = import.meta.glob('./*.svg', {
   eager: true,
 });
 
-export type IconName = 'palette' | 'setting' | 'models' | 'info';
+export type IconName = 'palette' | 'setting' | 'models' | 'info' | 'lumos';
 
 export type Icons = {
   [key in IconName]: string;
