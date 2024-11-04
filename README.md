@@ -9,11 +9,11 @@
 + 你可以自由的切换 GGUF 模型文件
 
 ## TODO
-
-+ []Function Calling 支持
-  - 网页总结
-  - AI
-+ []本地向量库文档
++ [ ] Function Calling 支持
+  - [ ] 网页总结
+  - [ ] AI
++ [ ] 本地向量库文档
+  - [ ] SQLLite(drizzle & better-sqlite3)
 
 ## 使用
 
