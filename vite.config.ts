@@ -7,7 +7,7 @@ import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
 import electron from 'vite-plugin-electron/simple';
 
-const electronExternalModules = ['node-llama-cpp'];
+const electronExternalModules = ['node-llama-cpp', '@libsql/client'];
 
 // https://vitejs.dev/config/
 export default defineConfig({

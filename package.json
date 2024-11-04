@@ -10,6 +10,7 @@
   },
   "main": "dist-electron/main.js",
   "scripts": {
+    "drizzle-kit": "drizzle-kit",
     "release": "standard-version",
     "dev": "vite",
     "build": "vue-tsc && vite build && electron-builder --config electron-builder.ts",
@@ -23,13 +24,12 @@
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
     "@iconify-json/material-symbols": "^1.2.5",
+    "@libsql/client": "^0.14.0",
     "@quasar/extras": "^1.16.12",
-    "@types/better-sqlite3": "^7.6.11",
     "@types/markdown-it": "^14.1.2",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vueuse/core": "^11.2.0",
     "@vueuse/electron": "^11.2.0",
-    "better-sqlite3": "^11.5.0",
     "drizzle-kit": "^0.27.1",
     "drizzle-orm": "^0.36.0",
     "electron": "^33.0.2",
