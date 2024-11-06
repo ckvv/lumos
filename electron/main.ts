@@ -4,6 +4,7 @@ import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 import { __dirname, RENDERER_DIST, VITE_DEV_SERVER_URL, VITE_PUBLIC } from './config';
 import { defaultModel, llamaSingleton, type Model, readGgufFileInfo } from './llama';
 import { store } from './store';
+import './db';
 
 let win: BrowserWindow | null;
 
