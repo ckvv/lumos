@@ -12,7 +12,6 @@ export function useIpcRendererOn(channel: string, listener: IpcRendererListener)
 
 export function useIpcRenderer() {
   const ipcRenderer = window.ipcRenderer;
-
   return {
     on: (channel: string, listener: IpcRendererListener) => useIpcRendererOn(channel, listener),
     once: ipcRenderer.once.bind(ipcRenderer),

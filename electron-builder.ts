@@ -34,6 +34,7 @@ export default {
     }
   },
   files: [
+    'local.db',
     'dist',
     'dist-electron',
     'models',
@@ -43,6 +44,7 @@ export default {
     'node_modules/@node-llama-cpp/${os}-${arch}*/bins/**/*',
     '!node_modules/node-llama-cpp/llama/localBuilds/**/*',
     'node_modules/node-llama-cpp/llama/localBuilds/${os}-${arch}*/**/*',
+    'node_modules/@libsql/**/*',
   ],
   asarUnpack: [
     // https://github.com/electron/asar/issues/319
@@ -50,6 +52,8 @@ export default {
     'node_modules/node-llama-cpp/bins',
     'node_modules/node-llama-cpp/llama/localBuilds',
     'node_modules/@node-llama-cpp/*',
+    'node_modules/@libsql/*',
+    'local.db',
   ],
   mac: {
     icon: 'public/lumos.icns',

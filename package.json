@@ -18,13 +18,13 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@libsql/client": "^0.14.0",
     "electron-store": "^10.0.0",
     "node-llama-cpp": "^3.2.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
     "@iconify-json/material-symbols": "^1.2.6",
-    "@libsql/client": "^0.14.0",
     "@quasar/extras": "^1.16.12",
     "@types/markdown-it": "^14.1.2",
     "@vitejs/plugin-vue": "^5.1.4",

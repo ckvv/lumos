@@ -5,5 +5,5 @@ export default defineConfig({
   dbCredentials: {
     url: 'file:local.db',
   },
-  schema: './electron/db/schema.ts',
+  schema: './src/electron/db/schema.ts',
 } as any);

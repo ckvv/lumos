@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@libsql/client':
+        specifier: ^0.14.0
+        version: 0.14.0
       electron-store:
         specifier: ^10.0.0
         version: 10.0.0
@@ -21,9 +24,6 @@ importers:
       '@iconify-json/material-symbols':
         specifier: ^1.2.6
         version: 1.2.6
-      '@libsql/client':
-        specifier: ^0.14.0
-        version: 0.14.0
       '@quasar/extras':
         specifier: ^1.16.12
         version: 1.16.12
@@ -6793,7 +6793,7 @@ snapshots:
     dependencies:
       '@vitest/spy': 2.1.2
       estree-walker: 3.0.3
-      magic-string: 0.30.11
+      magic-string: 0.30.12
     optionalDependencies:
       vite: 5.4.10(@types/node@22.7.4)(sass-embedded@1.80.6)
     optional: true
@@ -6812,7 +6812,7 @@ snapshots:
   '@vitest/snapshot@2.1.2':
     dependencies:
       '@vitest/pretty-format': 2.1.2
-      magic-string: 0.30.11
+      magic-string: 0.30.12
       pathe: 1.1.2
     optional: true
 
@@ -10866,7 +10866,7 @@ snapshots:
       '@vitest/utils': 2.1.2
       chai: 5.1.1
       debug: 4.3.7
-      magic-string: 0.30.11
+      magic-string: 0.30.12
       pathe: 1.1.2
       std-env: 3.7.0
       tinybench: 2.9.0
