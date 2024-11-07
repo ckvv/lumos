@@ -14,4 +14,4 @@ export const MAIN_DIST = path.join(process.env.APP_ROOT, 'dist-electron');
 export const RENDERER_DIST = path.join(process.env.APP_ROOT, 'dist');
 export const VITE_PUBLIC = VITE_DEV_SERVER_URL ? path.join(process.env.APP_ROOT, 'public') : RENDERER_DIST;
 export const MODEL_PATH = VITE_DEV_SERVER_URL ? path.join(process.env.APP_ROOT, 'models') : path.join(process.env.APP_ROOT, '../', 'app.asar.unpacked', 'models');
-export const DB_PATH = VITE_DEV_SERVER_URL ? path.join(process.env.APP_ROOT, 'local.db') : path.join(process.env.APP_ROOT, '../', 'app.asar.unpacked', 'local.db');
+export const DB_PATH = path.join(app.getPath('userData'), 'local.db');
