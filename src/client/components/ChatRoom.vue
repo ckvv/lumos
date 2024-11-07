@@ -3,8 +3,6 @@ import { useDebounceFn } from '@vueuse/core';
 import { ref, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useIpcRenderer } from '../compositions';
-import Markdown from './Markdown.vue';
-import Menu from './Menu.vue';
 
 const { t } = useI18n();
 const chatListRef = useTemplateRef('chatListRef');

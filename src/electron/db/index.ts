@@ -1,11 +1,12 @@
 import { drizzle } from 'drizzle-orm/libsql';
+import { DB_PATH } from '../config';
 import * as schema from './schema';
 
 export * as schema from './schema';
 
 export const db = drizzle<typeof schema>({
   connection: {
-    url: 'file:local.db',
+    url: `file:${DB_PATH}`,
   },
   casing: 'snake_case',
   schema,

@@ -7,12 +7,23 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ChatRoom: typeof import('./src/client/components/ChatRoom.vue')['default']
+    KIcon: typeof import('./src/client/components/KIcon.vue')['default']
+    Markdown: typeof import('./src/client/components/Markdown.vue')['default']
+    Menu: typeof import('./src/client/components/Menu.vue')['default']
     QBtn: typeof import('quasar')['QBtn']
+    QCard: typeof import('quasar')['QCard']
+    QCardActions: typeof import('quasar')['QCardActions']
+    QCardSection: typeof import('quasar')['QCardSection']
+    QDialog: typeof import('quasar')['QDialog']
     QInput: typeof import('quasar')['QInput']
     QItem: typeof import('quasar')['QItem']
     QItemLabel: typeof import('quasar')['QItemLabel']
     QItemSection: typeof import('quasar')['QItemSection']
     QScrollArea: typeof import('quasar')['QScrollArea']
     QSelect: typeof import('quasar')['QSelect']
+    QSpace: typeof import('quasar')['QSpace']
+    Seeting: typeof import('./src/client/components/Seeting.vue')['default']
+    Typing: typeof import('./src/client/components/Typing.vue')['default']
   }
 }

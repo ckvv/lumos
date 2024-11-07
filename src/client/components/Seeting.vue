@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { IconName } from '../assets/icons';
 import { ref } from 'vue';
-import KIcon from '../components/KIcon.vue';
 
 const icon = ref(false);
 

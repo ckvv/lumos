@@ -22,6 +22,7 @@ export default defineConfig({
   },
   plugins: [
     Components({
+      dirs: ['src/client/components'],
       resolvers: [QuasarResolver()],
     }),
     UnoCSS(),
