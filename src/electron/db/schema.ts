@@ -5,12 +5,12 @@ export const ggufs = table(
   'ggufs',
   {
     id: t.int().primaryKey({ autoIncrement: true }),
-    name: t.text().notNull().unique(),
-    path: t.text().notNull(),
+    modelName: t.text().notNull().unique(),
+    modelPath: t.text().notNull(),
   },
   (table) => {
     return {
-      nameIndex: t.uniqueIndex('name_idx').on(table.name),
+      modelNameIndex: t.uniqueIndex('model_name_idx').on(table.modelName),
     };
   },
 );

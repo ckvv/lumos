@@ -2,9 +2,8 @@ import path from 'node:path';
 import process from 'node:process';
 import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 import { __dirname, RENDERER_DIST, VITE_DEV_SERVER_URL, VITE_PUBLIC } from './config';
+import { ggufs } from './db';
 import { defaultModel, llamaSingleton, type Model, readGgufFileInfo } from './llama';
-import { store } from './store';
-import './db';
 
 let win: BrowserWindow | null;
 
@@ -109,18 +108,19 @@ app.whenReady().then(async () => {
   });
 });
 
-function updateModels(handler?: (model: Model[]) => Model[]) {
-  const key = 'models';
+async function updateModels(handler?: (model: Model[]) => Model[]) {
   let models: Model[] = [];
   try {
-    models = store.get(key) as Model[] || [];
+    models = await ggufs.getALl();
   // eslint-disable-next-line unused-imports/no-unused-vars
   } catch (error) {
     models = [];
   }
   models = handler ? handler(models) : models;
 
-  store.set(key, models);
+  if (models.length) {
+    await ggufs.setALl(models);
+  }
 
   return models;
 }
