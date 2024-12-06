@@ -7,10 +7,10 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    ChatRoom: typeof import('./src/client/components/ChatRoom.vue')['default']
-    KIcon: typeof import('./src/client/components/KIcon.vue')['default']
-    Markdown: typeof import('./src/client/components/Markdown.vue')['default']
-    Menu: typeof import('./src/client/components/Menu.vue')['default']
+    ChatRoom: typeof import('./src/renderer/components/ChatRoom.vue')['default']
+    KIcon: typeof import('./src/renderer/components/KIcon.vue')['default']
+    Markdown: typeof import('./src/renderer/components/Markdown.vue')['default']
+    Menu: typeof import('./src/renderer/components/Menu.vue')['default']
     QBtn: typeof import('quasar')['QBtn']
     QCard: typeof import('quasar')['QCard']
     QCardActions: typeof import('quasar')['QCardActions']
@@ -23,7 +23,7 @@ declare module 'vue' {
     QScrollArea: typeof import('quasar')['QScrollArea']
     QSelect: typeof import('quasar')['QSelect']
     QSpace: typeof import('quasar')['QSpace']
-    Seeting: typeof import('./src/client/components/Seeting.vue')['default']
-    Typing: typeof import('./src/client/components/Typing.vue')['default']
+    Seeting: typeof import('./src/renderer/components/Seeting.vue')['default']
+    Typing: typeof import('./src/renderer/components/Typing.vue')['default']
   }
 }

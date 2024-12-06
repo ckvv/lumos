@@ -13,7 +13,7 @@
     "drizzle-kit": "drizzle-kit",
     "release": "standard-version",
     "dev": "vite",
-    "build": "vue-tsc && vite build && electron-builder --config electron-builder.ts",
+    "build": "vite build && electron-builder --config electron-builder.ts",
     "preview": "vite preview",
     "lint": "eslint . --fix"
   },

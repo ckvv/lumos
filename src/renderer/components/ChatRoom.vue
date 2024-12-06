@@ -3,6 +3,7 @@ import { useDebounceFn } from '@vueuse/core';
 import { ref, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useIpcRenderer } from '../compositions';
+import { API } from '../ipc/api.ts';
 
 const { t } = useI18n();
 const chatListRef = useTemplateRef('chatListRef');
@@ -74,6 +75,10 @@ function handleKeydown(event: KeyboardEvent) {
     startChat(input.value);
   }
 }
+
+(async () => {
+  console.log(await API.chat('1+1'));
+})();
 </script>
 
 <template>

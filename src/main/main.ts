@@ -3,6 +3,7 @@ import process from 'node:process';
 import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 import { __dirname, RENDERER_DIST, VITE_DEV_SERVER_URL, VITE_PUBLIC } from './config';
 import { ggufs } from './db';
+import { setupIPCHandlers } from './ipc/ipcHandler';
 import { defaultModel, llamaSingleton, type Model, readGgufFileInfo } from './llama';
 
 let win: BrowserWindow | null;
@@ -106,6 +107,8 @@ app.whenReady().then(async () => {
       return model;
     }
   });
+
+  setupIPCHandlers();
 });
 
 async function updateModels(handler?: (model: Model[]) => Model[]) {
