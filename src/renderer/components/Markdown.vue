@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import markdownit from 'markdown-it';
+import Markdownit from 'markdown-it';
 import { computed } from 'vue';
+import { highlight, markdownItKatexGpt } from '../utils/markdown.ts';
 
 const props = defineProps<{
   value: string;
 }>();
 
-const md = markdownit();
+const md = new Markdownit({ highlight });
+md.use(markdownItKatexGpt);
 
 const result = computed(() => {
   return md.render(props.value);
@@ -98,24 +100,28 @@ const result = computed(() => {
   }
 
   /* 代码块样式 */
-  pre,
   code {
-    background-color: #f1f1f1;
+    // background-color: #f1f1f1;
     border-radius: 5px;
-    padding: 10px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.95em;
+    // &[class*="language-"] {
+    //   // padding: 2px 6px;
+    // }
+    &[class^="language-"] {
+      background-color: green;
+    }
+    // &:not([class*="language-"]) {
+    //   background-color: red;
+    // }
   }
 
   pre {
     overflow-x: auto;
     margin: 20px 0;
+    padding: 10px;
   }
 
-  code {
-    background-color: #e8e8e8;
-    padding: 2px 6px;
-  }
 
   /* 列表样式 */
   ul,
@@ -128,11 +134,11 @@ const result = computed(() => {
     margin: 0.5em 0;
   }
 
-  ul li::before {
-    content: "•";
-    color: #e74c3c;
-    margin-right: 10px;
-  }
+  // ul li::before {
+  //   content: "•";
+  //   color: #e74c3c;
+  //   margin-right: 10px;
+  // }
 
   /* 表格样式 */
   table {
@@ -162,6 +168,10 @@ const result = computed(() => {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
+  }
+
+  .katex {
+    display: inline-block;
   }
 }
 </style>
