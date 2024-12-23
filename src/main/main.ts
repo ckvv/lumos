@@ -1,10 +1,9 @@
 import path from 'node:path';
 import process from 'node:process';
-import { app, BrowserWindow, dialog, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import { __dirname, RENDERER_DIST, VITE_DEV_SERVER_URL, VITE_PUBLIC } from './config';
-import { ggufs } from './db';
-import { setupIPCHandlers } from './ipc/ipcHandler';
-import { defaultModel, llamaSingleton, type Model, readGgufFileInfo } from './llama';
+import { setupIPCHandlers } from './ipc/handlers';
+import { defaultModel, llamaSingleton } from './llama';
 
 let win: BrowserWindow | null;
 
@@ -76,54 +75,5 @@ app.whenReady().then(async () => {
     event.sender.send('chat-end');
   });
 
-  ipcMain.handle('get-default-models', async (_event) => {
-    return updateModels();
-  });
-
-  ipcMain.handle('chat-open-load-model', async () => {
-    const { canceled, filePaths } = await dialog.showOpenDialog(win, { securityScopedBookmarks: true });
-    if (!canceled) {
-      const modelPath = filePaths[0];
-      await readGgufFileInfo(modelPath);
-      const model = {
-        modelName: path.basename(modelPath, path.extname(modelPath)),
-        modelPath,
-      };
-      updateModels((models) => {
-        if (!models.find(m => m.modelPath === model.modelPath)) {
-          models.push(model);
-        }
-        return models;
-      });
-      return model;
-    }
-  });
-
-  ipcMain.handle('chat-load-model', async (event, model: Model) => {
-    if (model) {
-      await llamaSingleton.setModel({
-        modelPath: model.modelPath || defaultModel.modelPath,
-      });
-      return model;
-    }
-  });
-
-  setupIPCHandlers();
+  setupIPCHandlers({ win });
 });
-
-async function updateModels(handler?: (model: Model[]) => Model[]) {
-  let models: Model[] = [];
-  try {
-    models = await ggufs.getALl();
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  } catch (error) {
-    models = [];
-  }
-  models = handler ? handler(models) : models;
-
-  if (models.length) {
-    await ggufs.setALl(models);
-  }
-
-  return models;
-}
