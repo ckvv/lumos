@@ -1,7 +1,7 @@
-import { chat } from './chat';
+import * as chat from './chat';
 
 export const handlers = {
-  chat,
+  ...chat,
 } as const;
 
 export type HANDLER_TYPES = keyof typeof handlers;

@@ -10,7 +10,6 @@ const models = ref<{ modelName: string; modelPath: string }[]>([]);
 const model = ref(models.value[0]);
 nextTick(async () => {
   const defaultModels = await API.getDefaultModels();
-  console.log(defaultModels);
   models.value = defaultModels;
   model.value = defaultModels[0];
 });
