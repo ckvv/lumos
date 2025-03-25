@@ -1,5 +1,6 @@
 import path from 'node:path';
 import process from 'node:process';
+import commonjs from '@rollup/plugin-commonjs';
 import vue from '@vitejs/plugin-vue';
 import UnoCSS from 'unocss/vite';
 import { QuasarResolver } from 'unplugin-vue-components/resolvers';
@@ -7,7 +8,7 @@ import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
 import electron from 'vite-plugin-electron/simple';
 
-const electronExternalModules = ['node-llama-cpp', '@libsql/client'];
+const electronExternalModules = ['node-llama-cpp'];
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,6 +22,10 @@ export default defineConfig({
     chunkSizeWarningLimit: 1024,
   },
   plugins: [
+    commonjs({
+      ignoreDynamicRequires: true,
+      dynamicRequireTargets: ['@libsql/darwin-x64'],
+    }),
     Components({
       dirs: ['src/renderer/components'],
       resolvers: [QuasarResolver()],

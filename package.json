@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.5",
   "private": true,
-  "packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca",
+  "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
   "description": "在您的机器上本地运行 AI 模型",
   "author": {
     "name": "ckvv"
@@ -13,43 +13,50 @@
     "drizzle-kit": "drizzle-kit",
     "release": "standard-version",
     "dev": "vite",
+    "start:build": "electron ./dist-electron",
     "build": "vite build && electron-builder --config electron-builder.ts",
     "preview": "vite preview",
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "@libsql/client": "^0.14.0",
-    "h3": "^1.13.0",
-    "node-llama-cpp": "^3.3.1"
+    "@libsql/client": "^0.15.1",
+    "node-llama-cpp": "^3.6.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.12.0",
-    "@iconify-json/material-symbols": "^1.2.12",
-    "@quasar/extras": "^1.16.15",
+    "@antfu/eslint-config": "^4.11.0",
+    "@iconify-json/material-symbols": "^1.2.17",
+    "@quasar/extras": "^1.16.17",
+    "@rollup/plugin-commonjs": "28.0.3",
     "@types/markdown-it": "^14.1.2",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "@vueuse/core": "^12.1.0",
-    "@vueuse/electron": "^12.1.0",
-    "drizzle-kit": "^0.30.1",
-    "drizzle-orm": "^0.38.2",
-    "electron": "^33.2.1",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vueuse/core": "^13.0.0",
+    "@vueuse/electron": "^13.0.0",
+    "drizzle-kit": "^0.30.5",
+    "drizzle-orm": "^0.41.0",
+    "electron": "^35.0.3",
     "electron-builder": "^25.1.8",
-    "eslint": "^9.17.0",
-    "highlight.js": "^11.11.0",
+    "eslint": "^9.23.0",
+    "highlight.js": "^11.11.1",
     "markdown-it": "^14.1.0",
     "markdown-it-katex-gpt": "^1.1.0",
-    "quasar": "^2.17.5",
-    "sass-embedded": "^1.83.0",
+    "quasar": "^2.18.1",
+    "sass-embedded": "^1.86.0",
     "standard-version": "^9.5.0",
-    "typescript": "^5.7.2",
-    "unocss": "^0.65.2",
-    "unplugin-vue-components": "^0.28.0",
-    "vite": "^6.0.5",
+    "typescript": "^5.8.2",
+    "unocss": "66.1.0-beta.6",
+    "unplugin-vue-components": "^28.4.1",
+    "vite": "^6.2.3",
     "vite-plugin-electron": "^0.29.0",
     "vite-plugin-electron-renderer": "^0.14.6",
     "vue": "^3.5.13",
-    "vue-i18n": "^10.0.5",
-    "vue-tsc": "^2.1.10",
-    "zx": "^8.2.4"
+    "vue-i18n": "^11.1.2",
+    "vue-tsc": "^2.2.8",
+    "zx": "^8.4.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "esbuild"
+    ]
   }
 }

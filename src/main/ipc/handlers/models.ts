@@ -1,13 +1,13 @@
 import path from 'node:path';
 import { dialog } from 'electron';
-import { ggufs } from '../../db';
+// import { ggufs } from '../../db';
 import { defaultModel, llamaSingleton, type Model, readGgufFileInfo } from '../../llama';
 
 async function updateModels(handler?: (model: Model[]) => Model[]) {
   let models: Model[] = [];
   console.log('models');
   try {
-    models = await ggufs.getALl();
+    // models = await ggufs.getALl();
   // eslint-disable-next-line unused-imports/no-unused-vars
   } catch (error) {
     models = [];
@@ -15,7 +15,7 @@ async function updateModels(handler?: (model: Model[]) => Model[]) {
   models = handler ? handler(models) : models;
 
   if (models.length) {
-    await ggufs.setALl(models);
+    // await ggufs.setALl(models);
   }
 
   return models;

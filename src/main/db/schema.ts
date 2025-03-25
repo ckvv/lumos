@@ -9,9 +9,7 @@ export const ggufs = table(
     modelPath: t.text().notNull(),
   },
   (table) => {
-    return {
-      modelNameIndex: t.uniqueIndex('model_name_idx').on(table.modelName),
-    };
+    return [t.uniqueIndex('model_name_idx').on(table.modelName)];
   },
 );
 
