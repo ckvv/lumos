@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
-import type { DefineComponent } from 'vue';
 import type { ZH } from './locales/zh';
 
 export {};

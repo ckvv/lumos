@@ -6,5 +6,5 @@ export default defineConfig({
     url: `file:local.db`,
   },
   casing: 'snake_case',
-  schema: './src/electron/db/schema.ts',
+  schema: './src/main/db/schema.ts',
 } as any);

@@ -1,5 +1,3 @@
-import { ipcMain } from 'electron';
-
 export async function sendMessage(type: string, payload?: any) {
   const result = await window.ipcRenderer.invoke('message', type, payload);
   console.log({

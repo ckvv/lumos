@@ -1,7 +1,8 @@
+import type { Model } from '../../llama';
 import path from 'node:path';
 import { dialog } from 'electron';
 // import { ggufs } from '../../db';
-import { defaultModel, llamaSingleton, type Model, readGgufFileInfo } from '../../llama';
+import { defaultModel, llamaSingleton, readGgufFileInfo } from '../../llama';
 
 async function updateModels(handler?: (model: Model[]) => Model[]) {
   let models: Model[] = [];

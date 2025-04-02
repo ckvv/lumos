@@ -1,4 +1,4 @@
-import type { IpcRenderer, IpcRendererEvent } from 'electron';
+import type { IpcRendererEvent } from 'electron';
 import { onScopeDispose } from 'vue';
 
 export type IpcRendererListener = (event: IpcRendererEvent, ...args: any[]) => void;

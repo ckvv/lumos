@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { type IconName, icons } from '../assets/icons';
+import type { IconName } from '../assets/icons';
+import { icons } from '../assets/icons';
 
 defineProps<{
   name: IconName;

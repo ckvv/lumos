@@ -1,4 +1,5 @@
-import { createI18n, type I18nOptions } from 'vue-i18n';
+import type { I18nOptions } from 'vue-i18n';
+import { createI18n } from 'vue-i18n';
 import { en, zh } from '../locales/index';
 
 const options: I18nOptions = {
