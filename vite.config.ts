@@ -1,6 +1,5 @@
 import path from 'node:path';
 import process from 'node:process';
-import commonjs from '@rollup/plugin-commonjs';
 import vue from '@vitejs/plugin-vue';
 import UnoCSS from 'unocss/vite';
 import { QuasarResolver } from 'unplugin-vue-components/resolvers';
@@ -15,17 +14,17 @@ export default defineConfig({
   optimizeDeps: {
     exclude: electronExternalModules,
     esbuildOptions: {
-      target: 'esnext',
+      target: 'es2022',
     },
+  },
+  esbuild: {
+    target: 'es2022',
   },
   build: {
     chunkSizeWarningLimit: 1024,
+    target: 'es2022',
   },
   plugins: [
-    commonjs({
-      ignoreDynamicRequires: true,
-      dynamicRequireTargets: ['@libsql/darwin-x64'],
-    }),
     Components({
       dirs: ['src/renderer/components'],
       resolvers: [QuasarResolver()],
@@ -39,7 +38,7 @@ export default defineConfig({
         entry: 'src/main/main.ts',
         vite: {
           build: {
-            target: 'esnext',
+            target: 'es2022',
             outDir: path.join(__dirname, 'dist-electron'),
             rollupOptions: {
               external: electronExternalModules,
@@ -51,6 +50,12 @@ export default defineConfig({
         // Shortcut of `build.rollupOptions.input`.
         // Preload scripts may contain Web assets, so use the `build.rollupOptions.input` instead `build.lib.entry`.
         input: path.join(__dirname, 'src/main/preload.ts'),
+        vite: {
+          build: {
+            target: 'es2022',
+            outDir: path.join(__dirname, 'dist-electron'),
+          },
+        },
       },
       // Ployfill the Electron and Node.js API for Renderer process.
       // If you want use Node.js in Renderer process, the `nodeIntegration` needs to be enabled in the Main process.
