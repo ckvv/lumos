@@ -28,4 +28,5 @@ dist-electron
 vite.config.ts.timestamp*
 
 models
+local.db
 

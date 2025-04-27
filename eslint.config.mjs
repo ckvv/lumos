@@ -8,4 +8,5 @@ export default antfu({
   stylistic: {
     semi: true,
   },
+  ignores: ['local.db'],
 });
