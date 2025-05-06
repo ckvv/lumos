@@ -64,6 +64,9 @@
     "ignoredBuiltDependencies": [
       "better-sqlite3",
       "unrs-resolver"
-    ]
+    ],
+    "patchedDependencies": {
+      "drizzle-kit": "patches/drizzle-kit.patch"
+    }
   }
 }

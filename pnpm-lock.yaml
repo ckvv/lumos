@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  drizzle-kit:
+    hash: 9079a8160ef25c93dd02ed97b03d1f19420e41654dbc7aa98c9425fb1a2f83df
+    path: patches/drizzle-kit.patch
+
 importers:
 
   .:
@@ -50,7 +55,7 @@ importers:
         version: 13.1.0(electron@36.1.0)(vue@3.5.13(typescript@5.8.3))
       drizzle-kit:
         specifier: ^0.31.1
-        version: 0.31.1
+        version: 0.31.1(patch_hash=9079a8160ef25c93dd02ed97b03d1f19420e41654dbc7aa98c9425fb1a2f83df)
       electron:
         specifier: ^36.1.0
         version: 36.1.0
@@ -8484,7 +8489,7 @@ snapshots:
       find-up: 3.0.0
       minimatch: 3.1.2
 
-  drizzle-kit@0.31.1:
+  drizzle-kit@0.31.1(patch_hash=9079a8160ef25c93dd02ed97b03d1f19420e41654dbc7aa98c9425fb1a2f83df):
     dependencies:
       '@drizzle-team/brocli': 0.10.2
       '@esbuild-kit/esm-loader': 2.6.5

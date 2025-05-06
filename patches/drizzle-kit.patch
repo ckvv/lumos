@@ -1,0 +1,20 @@
+diff --git a/bin.cjs b/bin.cjs
+index 99b0c1ee9d7c9fa0db37e40550fb2ef4e41acee5..123979cd970e479a52d1628e33d64fefc5700210 100755
+--- a/bin.cjs
++++ b/bin.cjs
+@@ -78745,10 +78745,14 @@ var init_connections = __esm({
+         if (driver2 === "pglite") {
+           assertPackages("@electric-sql/pglite");
+           const { PGlite, types: types3 } = await import("@electric-sql/pglite");
++          const { vector } = await import("@electric-sql/pglite/vector");
+           const { drizzle } = await import("drizzle-orm/pglite");
+           const { migrate: migrate2 } = await import("drizzle-orm/pglite/migrator");
+-          const pglite = new PGlite(normalisePGliteUrl(credentials2.url));
++          const pglite = new PGlite(normalisePGliteUrl(credentials2.url), {
++            extensions: { vector },
++          });
+           await pglite.waitReady;
++          await pglite.exec('CREATE EXTENSION IF NOT EXISTS vector;');
+           const drzl = drizzle(pglite);
+           const migrateFn = async (config) => {
+             return migrate2(drzl, config);
