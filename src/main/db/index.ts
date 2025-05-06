@@ -11,7 +11,6 @@ export const client = new PGlite(DB_PATH, {
   extensions: { vector },
 });
 
-console.log('DB_PATH', DB_PATH);
 export const db = drizzle<typeof schema>({
   client,
   casing: 'snake_case',
