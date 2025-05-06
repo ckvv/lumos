@@ -1,4 +1,4 @@
-import { db, schema } from './index';
+import { db, schema } from './index.ts';
 
 const { ggufs } = schema;
 

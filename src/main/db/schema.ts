@@ -41,14 +41,14 @@ export const files = pgTable(
   },
 );
 
-export const fileChunks = pgTable(
-  'file_chunks',
-  {
-    id: serial().primaryKey(),
-    fileId: integer().references(() => files.id),
-    chunkIndex: integer().notNull(), // 片段编号（第几段）
-    chunkText: text().notNull(), // 片段原始文本
-    embedding: vector('embedding', { dimensions: 1536 }),
-    ...timestamps,
-  },
-);
+// export const fileChunks = pgTable(
+//   'file_chunks',
+//   {
+//     id: serial().primaryKey(),
+//     fileId: integer().references(() => files.id),
+//     chunkIndex: integer().notNull(), // 片段编号（第几段）
+//     chunkText: text().notNull(), // 片段原始文本
+//     embedding: vector('embedding', { dimensions: 1536 }),
+//     ...timestamps,
+//   },
+// );

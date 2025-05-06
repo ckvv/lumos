@@ -4,9 +4,10 @@ export default defineConfig({
   dialect: 'postgresql',
   driver: 'pglite',
   dbCredentials: {
-    url: `file:local.db`,
+    url: `local.db`,
   },
   casing: 'snake_case',
   schema: './src/main/db/schema.ts',
   out: './drizzle',
+  verbose: true,
 } as any);

@@ -1,21 +1,18 @@
-// import { drizzle } from 'drizzle-orm/libsql';
 import { PGlite } from '@electric-sql/pglite';
 import { vector } from '@electric-sql/pglite/vector';
 import { drizzle } from 'drizzle-orm/pglite';
-import { DB_PATH } from '../config';
-import * as schema from './schema';
+import { DB_PATH } from '../config.ts';
+import * as schema from './schema.ts';
 
-export * as ggufs from './ggufs';
-export * as schema from './schema';
+export * as ggufs from './ggufs.ts';
+export * as schema from './schema.ts';
 
-export const client = new PGlite({
+export const client = new PGlite(DB_PATH, {
   extensions: { vector },
 });
 
+console.log('DB_PATH', DB_PATH);
 export const db = drizzle<typeof schema>({
-  connection: {
-    dataDir: DB_PATH,
-  },
   client,
   casing: 'snake_case',
   schema,

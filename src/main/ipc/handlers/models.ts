@@ -8,11 +8,8 @@ async function updateModels(handler?: (model: Model[]) => Model[]) {
   let models: Model[] = [];
   try {
     models = await ggufs.getALl();
-    console.log('models:', models);
-  // eslint-disable-next-line unused-imports/no-unused-vars
   } catch (error) {
-    console.log('__models', error);
-
+    console.log(error);
     models = [];
   }
   models = handler ? handler(models) : models;
