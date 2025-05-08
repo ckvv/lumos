@@ -21,8 +21,7 @@
   "dependencies": {
     "@electric-sql/pglite": "^0.3.0",
     "drizzle-orm": "^0.43.1",
-    "node-llama-cpp": "^3.7.0",
-    "pg": "^8.15.6"
+    "node-llama-cpp": "^3.7.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.12.1",
